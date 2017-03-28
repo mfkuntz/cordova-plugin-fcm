@@ -70,6 +70,7 @@ static NSData *lastPush;
                                                              error:&error];
         NSLog(@"APP WAS CLOSED DURING PUSH RECEPTION Saved data: %@", jsonData);
         lastPush = jsonData;
+        [FCMPlugin.fcmPlugin notifyOfMessage:jsonData];
     }
 }
 // [END receive_message in background]
