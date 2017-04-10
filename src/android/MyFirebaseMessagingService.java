@@ -50,7 +50,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 		
 		Log.d(TAG, "\tNotification Data: " + data.toString());
         FCMPlugin.sendPushPayload( data );
-        //sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody(), remoteMessage.getData());
+        sendNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody(), remoteMessage.getData());
     }
     // [END receive_message]
 
@@ -88,6 +88,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        String tag = "";
+        if (data.containsKey("type")) {
+            tag = data.get("type").toString();
+        }
+
+        int id = 0;
+        if (data.containsKey("id")) {
+            id = (int) data.get("id");
+        }
+
+        Log.d(TAG, "using " + tag + " as the tag and " + id.toString() + " as id");
+
+        notificationManager.notify(tag, id, notificationBuilder.build());
     }
 }
