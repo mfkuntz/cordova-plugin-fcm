@@ -98,7 +98,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             id = (int) data.get("id");
         }
 
-        Log.d(TAG, "using " + tag + " as the tag and " + id.toString() + " as id");
+        Log.d(TAG, "using " + tag + " as the tag and " + id + " as id");
 
         notificationManager.notify(tag, id, notificationBuilder.build());
     }
