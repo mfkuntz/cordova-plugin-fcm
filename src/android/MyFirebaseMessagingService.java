@@ -95,7 +95,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         int id = 0;
         if (data.containsKey("id")) {
-            id = (int) data.get("id");
+            String temp = data.get("id").toString();
+            id = Integer.parseInt(temp);
         }
 
         Log.d(TAG, "using " + tag + " as the tag and " + id + " as id");
