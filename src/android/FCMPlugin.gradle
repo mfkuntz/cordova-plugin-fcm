@@ -17,6 +17,6 @@ dependencies {
 	compile 'com.google.firebase:firebase-messaging:9.8.0'
 }
 
-// apply plugin: 'com.google.gms.google-services'
+
 // class must be used instead of id(string) to be able to apply plugin from non-root gradle file
-apply plugin: com.google.gms.googleservices.GoogleServicesPlugin
+// only apply if no one else has added this plugin
